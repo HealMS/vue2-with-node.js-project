@@ -6,6 +6,7 @@ import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import HelloWorld from '@/components/HelloWorld'
 import User from "@/components/User"
+import ShowText from "@/components/showText"
 import UserProps from "@/components/UserProp"
 
 Vue.use(Router)
@@ -47,6 +48,10 @@ const router =  new Router({
       path: '/UserProps/:id',
       component: UserProps,
       props: true,
+    },
+    {
+      path: '/showText',
+      component: ShowText,
     }
   ]
 })
