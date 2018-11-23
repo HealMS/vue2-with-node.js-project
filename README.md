@@ -1,22 +1,22 @@
-# express 应用生成器
+### express 应用生成器
 sudo npm install express-generator -g
 ---
 express book_service
 ---
 set DEBUG=book_service & npm start
 ---
-# mongoose 
+### mongoose 
 sudo npm i mongoose --save
 ---
-# supervisor 监控代码修改
+### supervisor 监控代码修改
 sudo npm i -g supervisor
 ---
-# Vue的实例属性和方法区分用户定义的属性Vue.xxx
+### Vue的实例属性和方法区分用户定义的属性Vue.xxx
 Vue.$el  Vue.$data  Vue.$watch()
 ---
-## Vue的生命周期钩子
-## RESTful API
-# npm 全局安装路径
+#### Vue的生命周期钩子
+#### RESTful API
+### npm 全局安装路径
 npm root -g
 ---
 router.push({path: 'reqister', query: {plan: "private"}}) = 
@@ -44,5 +44,5 @@ route: [
 }
 原来的$router.params.xx还是可以使用的
 ---
-# Vue.js Ajax库 vue-resource
+### Vue.js Ajax库 vue-resource
 npm i vue-resource
