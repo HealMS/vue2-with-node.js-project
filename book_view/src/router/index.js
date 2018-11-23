@@ -6,7 +6,10 @@ import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import HelloWorld from '@/components/HelloWorld'
 import User from "@/components/User"
+<<<<<<< HEAD
 import ShowText from "@/components/showText"
+=======
+>>>>>>> bc9c90b71aede9923ec110944d36e6cfae577771
 import UserProps from "@/components/UserProp"
 
 Vue.use(Router)
