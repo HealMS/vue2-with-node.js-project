@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+</head>
+
+<body>
+    <div id="example">
+        <div>Original message: "{{message}}"</div>
+        <div>Computed reversed message: "{{reverseMessge}}"</div>
+    </div>
+
+    <script src=""></script>
+    <script>
+        let app1 = new Vue({
+            el: "#example",
+            data() {
+                return {
+                    message: "Fuck the world",
+                }
+            },
+            computed: {
+                reverseMessge() {
+                    return this.message.split("").reverse().join("")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

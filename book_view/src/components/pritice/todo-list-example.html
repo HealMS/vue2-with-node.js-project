@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-for</title>
+</head>
+
+<body>
+    <div id="todo-list-example">
+        <input v-model="newTodoText" @keyup.enter="addNewTodo" placeholder="Add a todo" type="text" />
+        <ul>
+            <li is="todo-item" v-for="(todo, index) in todos" :key="todo.id" :title="todo.title"
+             @remove="todos.splice(index, 1)"></li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.js"></script>
+    <script>
+        Vue.component("todo-item", {
+            template: `
+                <li>{{title}}
+                    <button @click="$emit('remove')">X</button>
+                </li>    
+            `,
+            props: ['title'],
+        })
+
+        let app1 = new Vue({
+            el: "#todo-list-example",
+            data() {
+                return {
+                    todos: [
+                        {
+                            id: 1,
+                            title: "Do th dishes",
+                        },
+                        {
+                            id: 2,
+                            title: "Take out the trash",
+                        },
+                        {
+                            id: 3,
+                            title: "Mow the lawn",
+                        },
+                    ],
+                    nowTodoId: 3,
+                    newTodoText: "",
+                }
+            },
+            methods: {
+                addNewTodo() {
+                    this.todos.push({
+                        id: ++this.nowTodoId,
+                        title: this.newTodoText,
+                    })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

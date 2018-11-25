@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- <img src="./assets/logo.png"> -->
     <router-view/>
-    <router-view name="a"></router-view>
-    <router-view name="b"></router-view>
+    <!-- <router-view name="a"></router-view>
+    <router-view name="b"></router-view> -->
   </div>
 </template>
 

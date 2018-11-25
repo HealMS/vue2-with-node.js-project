@@ -46,3 +46,45 @@ route: [
 ---
 ### Vue.js Ajax库 vue-resource
 npm i vue-resource
+---
+### 指令参数 带有v-前缀的特殊属性
+v-once 只渲染一次，之后数据改变不再渲染
+v-html="xxx" 将字符串渲染成纯html文本
+v-model="xxx" 用于表单元素与数据的双向绑定
+v-if="xxx" 根据xxx的布尔值判断是否渲染
+v-bind:href="url" 响应式的更新标签的属性 可简写成 :href="url"
+v-on:click="doSomething" 绑定监听DOM事件 可简写成：@click="doSomething"
+---
+计算属性和方法
+计算属性是基于他们的以来的缓存的，即依赖的数据未发生变化，则再次访问时直接返回之前的计算结果
+方法即每次访问都执行一边函数
+---
+计算属性默认只有getter方法，但需要时也可以提供setter方法
+---
+v-if="xxx === 'c'" v-else-if="xxx === 'b'" v-else
+v-show="xxx"
+v-if是真正的条件渲染， 即切换过程在会销毁和重建， v-if也是惰性的，初始状态若为false，则什么都不做知道切换为true
+v-show则是简单的切换css中的display: none属性
+---
+### v-for
+#### 数组
+1. v-for="item in items" 也可以 v-for="item of items"
+2. v-for="(item, index) in items"
+#### 对象 {key: value}
+1. v-for="value in object"
+2. v-for="(value, key) in object"
+3. v-for="(value, key, index) in object"
+---
+v-on: click="say" say方法默认参数是event(原生DOM事件对象)
+v-on: click="say('hi')" 传入自定义参数
+v-on: click="say('hi', $event)" 用vue的实例变量访问event对象
+---
+#### 事件修饰符 .stop, .prevent, capture, .self, .once
+#### 键值修饰符 keyup.enter, keyup.13 等等
+#### 修饰键 keyup.alt.67 相当与alt+ASCII为67的键， click.ctrl ctrl+点击
+#### 鼠标的3个按键修饰符 .left, .right, middle
+---
+#### v-model指令用于表单元素与其数据的双向绑定，实际上就是监听事件的语法糖
+type: text， textarea 中v-model的值就是文本框的value
+type: checkbox 中v-model的值是checked===true的复选框的value, 绑定的数据初值应设为[]数组
+type: radio 中v-model的值就是选中的单选框的value
