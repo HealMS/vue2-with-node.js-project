@@ -9,6 +9,9 @@ const movie = new mongoose.Schema({
     movieNumDownload: Number,
     movieMainPage: Boolean,
 })
+movie.statics.findAll = function(callBack) {
+    this.find({}, callBack)
+}
 
 let movieModel = mongoose.model("movie", movie)
 

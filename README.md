@@ -86,5 +86,10 @@ v-on: click="say('hi', $event)" 用vue的实例变量访问event对象
 ---
 #### v-model指令用于表单元素与其数据的双向绑定，实际上就是监听事件的语法糖
 type: text， textarea 中v-model的值就是文本框的value
-type: checkbox 中v-model的值是checked===true的复选框的value, 绑定的数据初值应设为[]数组
-type: radio 中v-model的值就是选中的单选框的value
+type: checkbox， select>multiple 中v-model的值是checked===true的复选框的value, 绑定的数据初值应设为[]数组
+type: radio select 中v-model的值就是选中的单选框的value
+---
+#### 修饰符 in v-model
+.lazy 从keyup转变为change事件同步
+.number string->number
+.trim 去除字符串开头结尾的空格

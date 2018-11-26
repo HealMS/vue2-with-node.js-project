@@ -2,29 +2,30 @@
     <div class="headerPic">
         <div>
             <p class="imgTitle">{{recommendTitle}}</p>
-            <a href="www.baidu.com">
-                <img src="../../assets/shebao.jpg" class="headerImg" />
+            <a :href="recommendSrc">
+                <img :src="recommendImg" class="headerImg" />
             </a>
         </div>
     </div>
 </template>
 <script>
     export default {
+        props: ["recommendTitle", "recommendSrc", "recommendImg"],
         data() {
             return {
-                recommendTitle: ''
+                
             }
         }
     }
 </script>
 <style lang="css" scoped>
     .headerPic {
-        height: 300px;
+        height: 500px;
         width: 100%;
         background-color: antiquewhite;
     }
     .headerImg {
-        height: 300px;
+        height: 500px;
         width: 100%;
     }
     .imgTitle {

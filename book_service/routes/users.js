@@ -154,7 +154,7 @@ router.post("/postComment", (req, res, next) => {
     }
   })
 })
-
+/* 电影点赞 */
 router.post("/support", (req, res, next) => {
   if(!req.body.movie_id) {
     res.json({status: 1, message: "电影id传递失败"})
@@ -170,7 +170,7 @@ router.post("/support", (req, res, next) => {
     })
   })
 })
-
+/* 电影下载 */
 router.post("/download", (req, res, next) => {
   if(!req.body.movie_id) {
     res.json({status: 1, message: "电影id传递失败"})
@@ -185,6 +185,12 @@ router.post("/download", (req, res, next) => {
       })
     })
   }
+})
+/* 电影详情 */
+router.post("/detail", (req, res, next) => {
+  movie.findById({_id: req.body.id}, (err, findMovie) => {
+    res.json({status: 0, message: "获取成功", data: findMovie})
+  })
 })
 
 router.post("/sendEmail", (req, res) => {

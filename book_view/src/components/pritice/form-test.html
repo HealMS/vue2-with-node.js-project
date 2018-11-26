@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+</head>
+<body>
+    <div id="app" style="display: flex; justify-content: center; align-items: center;">
+        <div>
+                <h2>注册表单</h2>
+                <br>
+                <label for="">用户名称</label>
+                <input type="text" v-model="username" placeholder="用户名称">
+                <br><br>
+                <label for="">密码</label>
+                <input type="password" v-model="password" placeholder="输入密码">
+                <br><br>
+                <label for="">重复输入密码</label>
+                <input type="password" v-model="rePassword" placeholder="重复输入密码">
+                <br><br>
+                <label for="">性别</label>
+                <input type="radio" v-model="sex" id="male" value="male">
+                <label for="male">male</label>
+                <input type="radio" v-model="sex" id="female" value="female">
+                <label for="female">female</label>
+                <br><br>
+                <label for="">爱好</label>
+                <input type="checkbox" name="basketball" id="basketball" value="篮球" v-model="hobby">
+                <label for="basketball">篮球</label>
+                <input type="checkbox" name="football" id="football" value="足球" v-model="hobby">
+                <label for="football">足球</label>
+                <input type="checkbox" name="other" id="other" value="其他" v-model="hobby">
+                <label for="other">其他</label>
+                <br><br>
+                <label for="">职业</label>
+                <select name="job" id="job" v-model="work">
+                    <option value="" disabled>请选择</option>
+                    <option value="">学生</option>
+                    <option value="">工作</option>
+                    <option value="">其他</option>
+                </select>
+                <br><br>
+                <label for="">备注</label>
+                <textarea v-model="note" placeholder="备注"></textarea>
+                <br><br>
+                <button v-on:click="submit">提交</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.js"></script>
+    <script>
+        let app1 = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    username: "",
+                    password: "",
+                    rePassword: "",
+                    sex: "",
+                    hobby: [],
+                    work: "",
+                    note: "",
+                }
+            },
+            methods: {
+                submit() {
+                    if(this.password === this.rePassword) {
+                        let con = confirm(`用户名: ${this.username} 性别: ${this.sex} 
+                        爱好: ${this.hobby.join("-")} 职业: ${this.work} 备注: ${this.note} `)
+                        if(con) alert("提交成功")
+                        else alert("提交失败")
+                    } else {
+                        alert("两次密码输入不一致")
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

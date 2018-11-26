@@ -14,13 +14,13 @@ router.get('/', function(req, res, next) {
 });
 /* 推荐电影或新闻 */
 router.get("/showIndex", (req, res, next) => {
-  recommend.findAll(() => {
+  recommend.findAll((err, getRecommend) => {
     res.json({status: 0, message: "获取推荐", data: getRecommend})
   })
 })
 /* 显示管理员推荐的电影 */
 router.get("/showRanking", (req, res, next) => {
-  movie.find({movieMainPage: true}, (err, getMovies) => {
+  movie.findAll(/* {movieMainPage: true}, */ (err, getMovies) => {
     res.json({status: 0, message: "获取主页", data: getMovies})
   })
 })

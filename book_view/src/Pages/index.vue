@@ -5,17 +5,21 @@
             <user-message></user-message> <!-- 用户信息组件 -->
         </div>
         <div class="contentPic">
-            <index-header-pic></index-header-pic> <!-- 电影大图组件 -->
+            <index-header-pic v-for="item in headerItems" :key="item._id" :recommendImg="item.recommendImg"
+            :recommendSrc="item.recommendSrc" :recommendTitle="item.recommendTitle">
+                </index-header-pic> <!-- 电影大图组件 -->
         </div>
         <div class="contentMain">
             <div class="contentLeft">
                 <ul class="cont-ul">
-                    <movies-list></movies-list> <!-- 电影列表组件 -->
+                    <movies-list v-for="item in movieItems" :key="item._id" :id="item._id"
+                    :movieName="item.movieName" :movieTime="item.movieTime"></movies-list> <!-- 电影列表组件 -->
                 </ul>
             </div>
             <div class="contentRight">
                 <ul class="cont-ul">
-                    <news-list></news-list> <!-- 新闻列表组件 -->
+                    <news-list v-for="item in newsItems" :key="item._id" :id="item._id"
+                    :articleTitle="item.articleTitle" :articleTime="item.articleTime"></news-list> <!-- 新闻列表组件 -->
                 </ul>
             </div>
         </div>
@@ -29,10 +33,15 @@
     import MoviesList from "../components/movie/MoviesList"
     import NewsList from "../components/movie/NewsList"
     import CommonFooter from "../components/movie/CommonFooter"
+    import axios from "axios"
 
     export default {
         data() {
-            return {}
+            return {
+                headerItems: [],
+                newsItems: [],
+                movieItems: [],
+            }
         },
         components: {
             MovieIndexHeader,
@@ -43,7 +52,15 @@
             CommonFooter,
         },
         created() {
-            
+            axios.get("http://localhost:3000/showIndex").then(res => {
+                this.headerItems = res.data.data  
+            }).catch(err => console.log(err))
+            axios.get("http://localhost:3000/showArticle").then(res => {
+                this.newsItems = res.data.data                
+            }).catch(err => console.log(err))
+            axios.get("http://localhost:3000/showRanking").then(res => {
+                this.movieItems = res.data.data
+            }).catch(err => console.log(err))
         },
     }
 </script>
