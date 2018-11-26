@@ -93,3 +93,9 @@ type: radio select 中v-model的值就是选中的单选框的value
 .lazy 从keyup转变为change事件同步
 .number string->number
 .trim 去除字符串开头结尾的空格
+---
+#### axios 取代 vue.resource 的vue Ajax包
+格式如下： axios.method([url], {query}).then(res => {}).catch(err => {})
+---
+在vue的生命周期中created() 能够访问 methods
+---

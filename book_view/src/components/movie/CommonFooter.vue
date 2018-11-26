@@ -15,7 +15,7 @@
     .footer {
         height: 60px;
         width: 100%;
-        position: fixed;
+        position: relative;
         bottom: 0;
         left: 0;
         border-top: 2px solid #ccc;

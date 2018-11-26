@@ -62,7 +62,7 @@ router.post("/login", (req, res, next) => {
     if(err) res.json({status:1, message: "error!"})
     if(userSave.length) {
       let token_after = utils.getMD5Password(userSave[0].id)
-      res.json({status: 0, data: {token: token_after, user: userSave, message: "用户登录成功"}})
+      res.json({status: 0, data: {token: token_after, user: userSave}, message: "用户登录成功"})
       /* 验证成功则返回给用户token储存在本地 */
     } else {
       res.json({status: 1, message: "用户名或密码错误"})
@@ -94,7 +94,6 @@ router.post("/findPassword", (req, res) => {
         res.json({status:1, message: "用户登录错误"})
       }
     } else {
-      /* 不存在token 说明已经登录 */
       user.findUserPassword(req.body.username, req.body.userMail, req.body.userPhone, (err, userFound) => {
         if(userFound.length) {
           user.update({_id: userFound[0]._id}, {password: req.body.repassword}, (err, userUpdate) => {
@@ -152,6 +151,12 @@ router.post("/postComment", (req, res, next) => {
     } else {
       res.json({status: 0, message: "评论成功"})
     }
+  })
+})
+/* 电影评论 */
+router.post("/getAllComment", (req, res, next) => {
+  comment.find({"movie_id": req.body.movie_id}, (err, findComment) => {
+    res.json({status: 0, message: "获取成功", data: findComment})
   })
 })
 /* 电影点赞 */

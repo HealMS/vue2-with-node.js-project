@@ -4,7 +4,7 @@
         <div class="contentMain">
             <h1>{{movieName}}</h1>
             <div class="viewNum">下载次数: {{downloadNum}}</div>
-            <div><button>点击下载</button></div>
+            <div><button @click="movieDownload">点击下载</button></div>
             <div><img class="headerImg"></div>
             <div class="btnPosition">
                 <div class="SupportBtn" v-on:click="support">点赞<div>{{supportNum}}</div></div>
@@ -58,7 +58,14 @@ export default {
             }).catch(err => alert(err))
       },
       movieDownload(event) {
-          axios.post("http://")
+          axios.post("http://localhost:3000/users/download", {movie_id: this.movie_id})
+            .then(res => {
+                if(res.data.status === 1) {
+                    alert(res.data.message)
+                } else {
+                    window.location = res.data.data
+                }
+            })
       }
   }
 };

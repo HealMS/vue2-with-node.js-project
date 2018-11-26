@@ -19,7 +19,7 @@
                 id: '',
             }
         },
-        create() {
+        created() {
             let token = localStorage.getItem("token")
             if(token) {
                 this.isLogin = true
